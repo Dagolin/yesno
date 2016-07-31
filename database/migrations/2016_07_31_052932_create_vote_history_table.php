@@ -20,7 +20,7 @@ class CreateVoteHistoryTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
 
-            $table->foreign('vot_id')->references('id')->on('votes')->onDelete('set null');
+            $table->foreign('vote_id')->references('id')->on('votes')->onDelete('set null');
         });
     }
 
