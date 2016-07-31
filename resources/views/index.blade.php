@@ -38,8 +38,10 @@
                 <span class="visuallyhidden">add</span>
         </button>
         </a>
+
         <div class="android-screen-section mdl-typography--text-center">
             <div class="mdl-grid portfolio-max-width">
+                @if (count($popVotes) > 0 )
                 <div id="show-dialog-{!! $popVotes[0]['id'] !!}" class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-400-height"
                 style="background: url({{ $popVotes[0]['image'] }}) center / cover;">
                     <div class="mdl-card__title mdl-card--expand"></div>
@@ -48,6 +50,7 @@
                     </div>
                     <div id="mark-{!! $popVotes[0]['id'] !!}" class="voteMark big-stamp {{ ( true === (bool) $popVotes[0]['voted'] ) ? 'show' : 'hidden' }}"></div>
                 </div>
+                @endif
 
                 @foreach($votes as $vote)
                 <div id="show-dialog-{!! $vote['id'] !!}" class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-400-height"
