@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-    <div class="android-content mdl-layout__content">
+        <a name="top"></a>
         <a href="{{ url('vote/create') }}">
         <button id="mdl-add-button" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
                 <i class="material-icons mdl-color-text--white" role="presentation">add</i>
@@ -39,14 +39,14 @@
         </button>
         </a>
 
-        <div class="android-screen-section mdl-typography--text-center">
+        <div class="android-banner-section mdl-typography--text-center">
             <div class="mdl-grid portfolio-max-width">
                 @if (count($popVotes) > 0 )
-                <div id="show-dialog-{!! $popVotes[0]['id'] !!}" class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-400-height"
+                <div id="show-dialog-{!! $popVotes[0]['id'] !!}" class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-450-height"
                 style="background: url({{ $popVotes[0]['image'] }}) center / cover;">
                     <div class="mdl-card__title mdl-card--expand"></div>
                     <div class="mdl-card__actions">
-                        <span class="demo-card-image__filename">{!! $popVotes[0]['title'] !!}</span>
+                        <h4 class="mdl-subtitle">{!! $popVotes[0]['title'] !!}</h4>
                     </div>
                     <div id="mark-{!! $popVotes[0]['id'] !!}" class="voteMark big-stamp {{ ( true === (bool) $popVotes[0]['voted'] ) ? 'show' : 'hidden' }}"></div>
                 </div>
@@ -63,8 +63,6 @@
                 </div>
                 @endforeach
             </div>
-        </div>
-    </div>
 @endsection
 @section('footer')
     <script>

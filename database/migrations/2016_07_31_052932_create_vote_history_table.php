@@ -16,11 +16,13 @@ class CreateVoteHistoryTable extends Migration
             $table->increments('id');
             $table->string('fingerprint');
             $table->string('answer', 10);
-            $table->integer('vote_id');
-            $table->integer('user_id');
+            $table->integer('vote_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+        });
 
-            $table->foreign('vote_id')->references('id')->on('votes')->onDelete('set null');
+        Schema::table('vote_history', function($table) {
+            $table->foreign('vote_id')->references('id')->on('votes')->onDelete('cascade');
         });
     }
 

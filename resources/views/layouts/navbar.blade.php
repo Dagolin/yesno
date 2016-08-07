@@ -9,9 +9,10 @@
                     <img src="{{ URL::asset('images/user.jpg') }}" class="demo-avatar">
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="mdl-avatar-button">
-                    <li class="mdl-menu__item"><a href="{{ url('user/profile') }}">Profile</a></li>
-                    <li class="mdl-menu__item"><a href="{{ url('user/history') }}">My votes</a></li>
-                    <li class="mdl-menu__item"><a href="{{ url('logout') }}">Logout</a></li>
+                    <a href="{{ url('user/profile') }}"><li class="mdl-menu__item"><a href="{{ url('user/profile') }}">Profile</a></li></a>
+                    <a href="{{ url('user/history') }}"><li class="mdl-menu__item"><a href="{{ url('user/history') }}">My votes</a></li></a>
+                    <a href="{{ url('vote/create') }}"><li class="mdl-menu__item"><a href="{{ url('vote/create') }}">New idea</a></li></a>
+                    <a href="{{ url('logout') }}"><li class="mdl-menu__item"><a href="{{ url('logout') }}">Logout</a></li></a>
                 </ul>
             @else
             <a href="{{ url('login') }}">

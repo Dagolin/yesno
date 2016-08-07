@@ -18,52 +18,36 @@
         .portfolio-contact .mdl-textfield {
             width: 100%;
         }
+
+        .portfolio-profile-content {
+            max-width: 700px;
+        }
     </style>
 @endsection
 
 @section('content')
-    <main class="mdl-layout__content">
         <div class="mdl-grid portfolio-max-width portfolio-contact">
             <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Profile</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                    <p>
-                        Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet.
-                    </p>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('user/profile') }}">
-                        {{ csrf_field() }}
-                                <!-- name -->
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="name" name="name" id="name" required value="{{ $user->name }}">
-                            <label class="mdl-textfield__label" for="name">your name</label>
-                            <span class="mdl-textfield__error">required</span>
-                        </div>
-                        @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
+                <div class="mdl-grid portfolio-profile-content">
+                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">I am from :</h3>
+                    <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
+                            Facebook
+                    </div>
 
-                        <!-- email -->
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="email" name="email" id="email" required value="{{ $user->email }}">
-                            <label class="mdl-textfield__label" for="email">your mail address</label>
-                            <span class="mdl-textfield__error">a valid mail</span>
-                        </div>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
-<!--
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-                            Update
-                        </button>
-                        -->
-                    </form>
+                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">My name : </h3>
+                    <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
+                            <span>{{ $user->name }}</span>
+                    </div>
+
+                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">My mail address : </h3>
+                    <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
+                            <span>{{ $user->email }}</span>
+                    </div>
+                    <a href="">Hey wait! It's not me!</a>
                 </div>
+            </div>
         </div>
-    </main>
 @endsection

@@ -44,7 +44,7 @@ class VoteController extends Controller
     }
 
     /**
-     * Store a newly created vote history record in storage.
+     * Give a vote!
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -79,6 +79,17 @@ class VoteController extends Controller
 
             if ($isVoted){
                 return (new Response())->header('message', 'Opps, no spam votes sorry')->setStatusCode(406);
+            }
+
+            // self-vote not allowed
+            if (empty($userId))
+            {
+                if (Vote::where('id', $voteId)
+                        ->where('created_by', $userId)
+                        ->count() > 0)
+                {
+                    return (new Response())->header('message', 'Opps, you cannot vote for yours')->setStatusCode(406);
+                }
             }
 
             $newVoteHistory = $request->all();
@@ -123,7 +134,7 @@ class VoteController extends Controller
             $imagePath = '/public/images/votes/';
             $publicPath = '/images/votes/';
 
-            $imageName =  substr(Hash::make(time()), 0, 10). '.' . $request->file('image')->getClientOriginalExtension();
+            $imageName =  substr(Hash::make(time()), 7, 15). '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(base_path() .$imagePath, $imageName);
 
@@ -135,7 +146,7 @@ class VoteController extends Controller
 
         Vote::create($newVote);
 
-        return redirect('vote/create');
+        return redirect('user/history');
     }
 
     /**

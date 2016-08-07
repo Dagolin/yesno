@@ -80,6 +80,21 @@ a img {
 .mdl-card-400-height {
   min-height: 400px;
 }
+
+.mdl-card-450-height {
+  min-height: 450px;
+}
+
+.mdl-subtitle {
+  background: #fafafa;
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.mdl-subtitle {
+  background: #fafafa;
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
 .portfolio-blog-card-full-bg > .mdl-card__actions {
   padding: 16px;
   background: rgba(0, 0, 0, 0.2);

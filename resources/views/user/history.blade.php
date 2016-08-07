@@ -13,7 +13,6 @@
 @endsection
 
 @section('content')
-    <main class="mdl-layout__content">
         <div class="mdl-grid portfolio-max-width portfolio-contact">
             <div class="mdl-cell mdl-cell--12-col">
                 <div class="mdl-card__title">
@@ -24,7 +23,7 @@
                         <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp"
                              style="max-height: 400px;">
                             <div class="mdl-card__title mdl-card--expand more" style="cursor:pointer; background: url({!! $vote->image !!}) center / cover;" data-id="{{ $vote->id }}">
-                                <h2 class="mdl-card__title-text mdl-color-text--grey">{!! $vote->title !!}</h2>
+                                <h2 class="mdl-card__title-text mdl-subtitle">{!! $vote->title !!}</h2>
                             </div>
                             <div id="canvas-{{ $vote->id }}" class="mdl-card__supporting-text mdl-card--border more hidden" data-id="{{ $vote->id }}">
                                 <canvas id="myChart-{{ $vote->id }}" width="100" height="100"></canvas>
@@ -42,7 +41,7 @@
                         <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp"
                              style="max-height: 400px;">
                             <div class="mdl-card__title mdl-card--expand more" style="cursor:pointer; background: url({!! $vote->image !!}) center / cover;" data-id="{{ $vote->id }}">
-                                <h2 class="mdl-card__title-text mdl-color-text--grey">{!! $vote->title !!}</h2>
+                                <h2 class="mdl-card__title-text mdl-subtitle">{!! $vote->title !!}</h2>
                             </div>
                             <div id="canvas-{{ $vote->id }}" class="mdl-card__supporting-text mdl-card--border more hidden" data-id="{{ $vote->id }}">
                                 <canvas id="myChart-{{ $vote->id }}" width="100" height="100"></canvas>
@@ -50,9 +49,8 @@
                         </div>
                     @endforeach
                     </div>
+                </div>
             </div>
-    </main>
-
 @endsection
 @section('footer')
     <script>

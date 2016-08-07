@@ -33,7 +33,6 @@
     @endsection
 
 @section('content')
-    <main class="mdl-layout__content">
         <div class="mdl-grid portfolio-max-width portfolio-contact">
             <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title">
@@ -102,5 +101,4 @@
                 </div>
             </div>
         </div>
-    </main>
 @endsection

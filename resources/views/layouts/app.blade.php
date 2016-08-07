@@ -3,20 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Laravel</title>
+    <title>Yes no Maybe</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.pink-indigo.min.css" />
     <link rel="stylesheet" href="{{ URL::asset('css/material.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
     <!-- Styles -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
-
-
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
     @yield('header')
@@ -38,7 +34,10 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     @include('layouts.navbar')
 
-    @yield('content')
+    <main class="mdl-layout__content">
+        @yield('content')
+        @include('layouts.contentfooter')
+    </main>
 </div>
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
@@ -47,6 +46,8 @@
     <script src="{{ URL::asset('js/fingerprintjs2/fingerprint2.js') }}"></script>
     <script src="{{ URL::asset('js/Chart.min.js') }}"></script>
     <script src="{{ URL::asset('js/yesno.js') }}"></script>
+    <script src="{{ URL::asset('js/moment.js') }}"></script>
+    <script src="{{ URL::asset('js/bootstrap-material-datetimepicker.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
         $(document).ready(function () {

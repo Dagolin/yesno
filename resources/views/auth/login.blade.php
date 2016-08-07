@@ -29,77 +29,39 @@
         .portfolio-contact .mdl-textfield {
             width: 100%;
         }
+        .login-fb {
+            background: url({!! asset('images/FB-f-Logo__blue_512.png') !!}) center / cover;";
+            max-width: 350px;
+            max-height: 350px;
+        }
     </style>
 @endsection
 
 @section('content')
-    <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width portfolio-contact">
-            <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Login</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <p>
-                        Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet.
-                    </p>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-                                <!-- email -->
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="email" name="email" id="email" required value="{{ old('email') }}">
-                            <label class="mdl-textfield__label" for="email">your mail address</label>
-                            <span class="mdl-textfield__error">a valid mail</span>
-                        </div>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
+    <div class="mdl-grid portfolio-max-width portfolio-contact">
+        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Sign in</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <p>
+                    Sign in to make new votes, see if the others agree with you.
+                </p>
+            </div>
+            <div class="mdl-grid mdl-typography--text-center">
+                <!-- facebook -->
 
-                                    <!-- password -->
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="password" name="password" id="password" required>
-                                <label class="mdl-textfield__label" for="password">your pass ( at least 6 words)</label>
-                                <span class="mdl-textfield__error">Required</span>
-                            </div>
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                                @endif
+                <div class="mdl-cell mdl-cell--7-col mdl-card mdl-shadow--4dp">
+                    <a href="/redirect">N
+                        <img src="{!! asset('images/FB-f-Logo__blue_512.png') !!}"
+                             style="height: 100%; width: 100%;">
+                    </a>
+                    <div class="mdl-card__title">
+                        Sign in with Facebook
+                    </div>
 
-
-                                        <!-- remember me -->
-                                <div class="mdl-textfield">
-                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="remember">
-                                        <input type="checkbox" name="remember" id="remember" class="mdl-switch__input">
-                                        <span class="mdl-switch__label">Remember me</span>
-                                    </label>
-                                </div>
-
-
-
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--1-col">
-                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-                                        Login
-                                    </button>
-                                </div>
-                                <div class="mdl-layout-spacer"></div>
-                                <div class="mdl-cell mdl-cell--2-col">
-                                    <a href="register">
-                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" type="button">
-                                            Sign up
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                    </form>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 @endsection

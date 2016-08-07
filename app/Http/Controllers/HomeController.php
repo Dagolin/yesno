@@ -37,7 +37,7 @@ class HomeController extends Controller
      * @return  array
      */
     protected function getVoteList(){
-        $select = ['id', 'title', 'due_date', 'image', DB::raw('false as voted')];
+        $select = ['id', 'title', 'due_date', 'image', 'created_by', DB::raw('false as voted')];
 
         /*
          * 1. Pick a vote event with order due_date desc
@@ -48,7 +48,7 @@ class HomeController extends Controller
 
         $popVotes = Vote::whereDate('due_date', '>=', Carbon::today()->toDateString())
             ->orderBy('created_at', 'desc')
-            ->take(3)
+            ->take(1)
             ->get($select);
 
         $popVoteIds = $popVotes->pluck('id')->all();
@@ -60,7 +60,8 @@ class HomeController extends Controller
             ->get($select);
 
         // prevent redundant pulling
-        if (!empty($userId)){
+        if (!empty($userId))
+        {
 
             $voteHistories = VoteHistory::where('user_id', $userId)->lists('vote_id')->toArray();
 
@@ -74,6 +75,16 @@ class HomeController extends Controller
 
             foreach(array_intersect($voteIds, $voteHistories) as $key => $value) {
                 $votes[$key]->voted = 1;
+            }
+
+            foreach ($popVotes as $vote)
+            {
+                $vote->voted = $vote->created_by == $userId ? 1 : $vote->voted;
+            }
+
+            foreach ($votes as $vote)
+            {
+                $vote->voted = $vote->created_by == $userId ? 1 : $vote->voted;
             }
         }
 

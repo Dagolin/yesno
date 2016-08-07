@@ -63,7 +63,7 @@
                         </div>
                         <!-- publish date -->
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" name="publish_at" id="publish_at" value="2017-01-01" required>
+                            <input class="mdl-textfield__input" type="text" name="publish_at" id="publish_at" required>
                             <label class="mdl-textfield__label" for="publish_at">Publish at...</label>
                             <span class="mdl-textfield__error">Required</span>
                         </div>
@@ -85,5 +85,14 @@
     document.getElementById("image").onchange = function () {
         document.getElementById("imageTitle").value = this.files[0].name;
     };
+
+    $(document).ready(function(){
+        $( function() {
+            $( "#publish_at" ).bootstrapMaterialDatePicker({
+                time : false,
+                format : 'YYYY-MM-DD'
+            });
+        } );
+    });
 </script>
 @endsection

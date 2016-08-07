@@ -13,6 +13,8 @@ class Vote extends Model
 		'image',
 		'publish_at',
 		'due_date',
+		'created_by',
+		'updated_by',
 	];
 
 	/**
