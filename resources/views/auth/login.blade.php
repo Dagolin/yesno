@@ -52,7 +52,7 @@
                 <!-- facebook -->
 
                 <div class="mdl-cell mdl-cell--7-col mdl-card mdl-shadow--4dp">
-                    <a href="/redirect">N
+                    <a href="/redirect">
                         <img src="{!! asset('images/FB-f-Logo__blue_512.png') !!}"
                              style="height: 100%; width: 100%;">
                     </a>

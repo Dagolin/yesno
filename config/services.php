@@ -42,7 +42,7 @@ return [
     'facebook' => [
         'client_id' => '297139310639503',
         'client_secret' => '7fd7350ca62ed30a944e69a73dde3efc',
-        'redirect' => 'http://localhost:8000/callback',
+        'redirect' => 'http://yesno.cakjet.com/callback',
     ],
 
 ];
