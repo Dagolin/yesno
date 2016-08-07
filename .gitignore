@@ -1,6 +1,7 @@
 /vendor
 /node_modules
 /public/storage
+/public/images
 Homestead.yaml
 Homestead.json
 .env
@@ -13,3 +14,4 @@ composer.json
 composer.lock
 storage/debugbar/.gitignore
 package.json
+
