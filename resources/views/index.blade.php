@@ -3,12 +3,11 @@
 @section('dialogs')
     @foreach(array_merge($popVotes, $votes) as $vote)
     <dialog class="mdl-dialog" id="dialog-{!! $vote['id'] !!}" data-id="{!! $vote['id'] !!}">
-        <h4 class="mdl-dialog__title">Allow data collection?</h4>
+        <h4 class="mdl-dialog__title">The question is ...</h4>
         <div class="mdl-dialog__content">
             <p>
-                Allowing us to collect data will let us get you the information you want faster.
+                {{ $vote['title'] }}
             </p>
-            {!! $vote['id'] !!}
         </div>
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--4-col mdl-typography--text-center">
