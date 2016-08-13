@@ -43,7 +43,7 @@
             <div class="mdl-grid portfolio-max-width">
                 @if (count($popVotes) > 0 )
                 <div id="show-dialog-{!! $popVotes[0]['id'] !!}" class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-450-height"
-                style="background: url({{ $popVotes[0]['image'] }}) center / cover;">
+                style="background: url({{ $popVotes[0]['image'] }}) top / cover;">
                     <div class="mdl-card__title mdl-card--expand"></div>
                     <div class="mdl-card__actions">
                         <h4 class="mdl-subtitle">{!! $popVotes[0]['title'] !!}</h4>
@@ -54,10 +54,10 @@
 
                 @foreach($votes as $vote)
                 <div id="show-dialog-{!! $vote['id'] !!}" class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp mdl-card-400-height"
-                style="background: url({!! $vote['image'] !!}) center / cover;">
+                style="background: url({!! $vote['image'] !!}) left / cover;">
                     <div class="mdl-card__title mdl-card--expand"></div>
                     <div class="mdl-card__actions">
-                        <span class="demo-card-image__filename">{!! $vote['title'] !!}</span>
+                        <h5 class="mdl-subtitle">{!! $vote['title'] !!}</h5>
                     </div>
                     <div id="mark-{!! $vote['id'] !!}" class="voteMark small-stamp {{ ( true === (bool) $vote['voted'] ) ? 'show' : 'hidden' }}"></div>
                 </div>
