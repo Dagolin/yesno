@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class VoteController extends Controller
 {
@@ -33,9 +34,9 @@ class VoteController extends Controller
      */
     public function create()
     {
-        //
+        $tips = $this->loadTips();
 
-        return view('vote.createVote');
+        return view('vote.createVote', ['tip' => $tips[rand(0, count($tips) - 1)]]);
     }
 
 
@@ -64,6 +65,7 @@ class VoteController extends Controller
 
             // if vote not exists or out of date
             if (!(Vote::where('id', $voteId)
+                    ->where('status', 1)
                     ->whereDate('due_date', '>=', Carbon::today()->toDateString())
                     ->count() > 0))
             {
@@ -106,7 +108,7 @@ class VoteController extends Controller
                 ->where('id', $voteId)
                 ->update([
                     $answer => DB::raw($answer . ' + 1'),
-                    'due_date' => DB::raw('DATE_ADD(`due_date`, INTERVAL 1 DAY)')
+                    'due_date' => Carbon::now()->addDays(14)
                 ]);
 
             // return success message
@@ -134,14 +136,14 @@ class VoteController extends Controller
             $imagePath = '/public/images/votes/';
             $publicPath = '/images/votes/';
 
-            $imageName =  substr(Hash::make(time()), 7, 15). '.' . $request->file('image')->getClientOriginalExtension();
+            $imageName =  urlencode(substr(Hash::make(time()), 7, 15)) . '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(base_path() .$imagePath, $imageName);
 
             $newVote['image'] = $publicPath . $imageName;
         }
 
-        $newVote['due_date'] = Carbon::createFromFormat('Y-m-d', $newVote['publish_at'])->addDays(7);
+        $newVote['due_date'] = Carbon::createFromFormat('Y-m-d', $newVote['publish_at'])->addDays(14);
         $newVote['created_by'] = $newVote['updated_by'] = \Auth::User()->id;
 
         Vote::create($newVote);
@@ -253,5 +255,16 @@ class VoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function loadTips($path = null)
+    {
+        $path = empty($path) ? 'tip.json' : $path;
+
+        if (!Storage::exists($path)) {
+            throw new \Exception("Invalid Tip File");
+        }
+
+        return json_decode(Storage::get($path));
     }
 }

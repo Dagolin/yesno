@@ -21,8 +21,13 @@ Route::get('logout', 'Auth\AuthController@logout');
  * Homepage and user
  */
 
-Route::get('/redirect', 'SocialAuthController@redirect');
-Route::get('/callback', 'SocialAuthController@callback');
+Route::get('/redirect/facebook', 'SocialAuthController@redirect');
+Route::get('/callback/facebook', 'SocialAuthController@callback');
+
+Route::get('/redirect/google', 'SocialAuthController@googleRedirect');
+Route::get('/callback/google', 'SocialAuthController@googleCallback');
+
+
 
 Route::get('/', 'HomeController@index');
 

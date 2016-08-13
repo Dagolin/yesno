@@ -44,9 +44,10 @@ class HomeController extends Controller
          * 2. Pick 6 last votes
          * 3. prevent redundant pulling if login
          */
-        $userId = empty(\Auth::User()) ? : \Auth::User()->id;
+        $userId = empty(\Auth::User()) ? null : \Auth::User()->id;
 
         $popVotes = Vote::whereDate('due_date', '>=', Carbon::today()->toDateString())
+            ->where('status', 1)
             ->orderBy('created_at', 'desc')
             ->take(1)
             ->get($select);
@@ -54,6 +55,7 @@ class HomeController extends Controller
         $popVoteIds = $popVotes->pluck('id')->all();
 
         $votes = Vote::whereDate('due_date', '>=', Carbon::today()->toDateString())
+            ->where('status', 1)
             ->whereNotIn('id', $popVoteIds)
             ->orderBy('created_at')
             ->take(10)
@@ -62,7 +64,6 @@ class HomeController extends Controller
         // prevent redundant pulling
         if (!empty($userId))
         {
-
             $voteHistories = VoteHistory::where('user_id', $userId)->lists('vote_id')->toArray();
 
             $voteHistories = array_unique($voteHistories);

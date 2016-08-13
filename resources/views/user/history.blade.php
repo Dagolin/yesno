@@ -9,6 +9,11 @@
         .mdl-list__item-primary-content:hover{
             cursor:pointer;
         }
+
+        .emptyChart {
+            font-size : 22px;
+            color : red;
+        }
     </style>
 @endsection
 
@@ -28,6 +33,7 @@
                             <div id="canvas-{{ $vote->id }}" class="mdl-card__supporting-text mdl-card--border more hidden" data-id="{{ $vote->id }}">
                                 <canvas id="myChart-{{ $vote->id }}" width="100" height="100"></canvas>
                             </div>
+                            <div id="myChartEmpty-{{ $vote->id }}" class="mdl-card__supporting-text hidden emptyChart">Insufficient data, please wait and come back again later.</div>
                         </div>
                     @endforeach
                 </div>
@@ -38,6 +44,9 @@
 
                     @foreach($givenHistories as $history)
                         <?php $vote = $history->vote; ?>
+                        @if ($vote->status != 1)
+                            @continue
+                        @endif
                         <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp"
                              style="max-height: 400px;">
                             <div class="mdl-card__title mdl-card--expand more" style="cursor:pointer; background: url({!! $vote->image !!}) center / cover;" data-id="{{ $vote->id }}">
@@ -82,6 +91,13 @@
             }).fail(function(xhr) {
                 alert(xhr.getResponseHeader('message'));
             }).done(function(data, textStatus, jqXHR ){
+
+                if (parseInt(data.yes) == 0 && parseInt(data.no) == 0 && parseInt(data.maybe) == 0)
+                {
+                    $('#myChartEmpty-' + voteId).removeClass('hidden');
+
+                    return;
+                }
 
                 $('#canvas-' + voteId).removeClass('hidden');
 

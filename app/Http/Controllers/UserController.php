@@ -40,6 +40,7 @@ class UserController extends Controller
     {
         // Get all votes created by user
         $createdVotes = Vote::where('created_by', \Auth::User()->id)
+            ->where('status', 1)
             ->orderBy('created_at', 'desc')
             ->get();
 
