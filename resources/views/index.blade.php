@@ -3,11 +3,11 @@
 @section('dialogs')
     @foreach(array_merge($popVotes, $votes) as $vote)
     <dialog class="mdl-dialog" id="dialog-{!! $vote['id'] !!}" data-id="{!! $vote['id'] !!}">
-        <h4 class="mdl-dialog__title">The question is ...</h4>
+        <h4 class="mdl-dialog__title">Q : </h4>
         <div class="mdl-dialog__content">
-            <p>
+            <h4>
                 {{ $vote['title'] }}
-            </p>
+            </h4>
         </div>
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--4-col mdl-typography--text-center">
