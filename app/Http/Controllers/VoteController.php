@@ -136,7 +136,9 @@ class VoteController extends Controller
             $imagePath = '/public/images/votes/';
             $publicPath = '/images/votes/';
 
-            $imageName =  urlencode(substr(Hash::make(time()), 7, 15)) . '.' . $request->file('image')->getClientOriginalExtension();
+            $imageName =  substr(Hash::make(time()), 7, 15) . '.' . $request->file('image')->getClientOriginalExtension();
+
+            $imageName = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName); // Removes special chars.
 
             $request->file('image')->move(base_path() .$imagePath, $imageName);
 
