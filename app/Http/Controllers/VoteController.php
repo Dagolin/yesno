@@ -54,7 +54,7 @@ class VoteController extends Controller
     {
         $response = [];
 
-        $userId = empty(\Auth::User()) ? : \Auth::User()->id;
+        $userId = empty(\Auth::User()) ? null : \Auth::User()->id;
 
         $request = $this->request;
 
@@ -75,9 +75,9 @@ class VoteController extends Controller
 
             // if already voted
             if (empty($userId))
-                $isVoted = (VoteHistory::where('fingerprint', $fingerprint)->where('id', $voteId)->count() > 0);
+                $isVoted = (VoteHistory::where('fingerprint', $fingerprint)->where('vote_id', $voteId)->count() > 0);
             else
-                $isVoted = (VoteHistory::where('user_id', $userId)->where('id', $voteId)->count() > 0);
+                $isVoted = (VoteHistory::where('user_id', $userId)->where('vote_id', $voteId)->count() > 0);
 
             if ($isVoted){
                 return (new Response())->header('message', 'Opps, no spam votes sorry')->setStatusCode(406);
