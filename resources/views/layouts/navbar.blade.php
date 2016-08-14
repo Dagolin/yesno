@@ -5,7 +5,7 @@
         <!-- Add spacer, to align navigation to the right in desktop -->
         <div class="android-header-spacer mdl-layout-spacer"></div>
         <div class="android-navbar-title">
-            <h5>Start a poll, react, have fun.</h5>
+            <h5>Start a poll, react.</h5>
         </div>
             @if(Auth::check())
                 <button id="mdl-avatar-button" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab">
