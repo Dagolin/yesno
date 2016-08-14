@@ -125,6 +125,14 @@ a img {
   font-weight: 700;
   font-size: 14px;
 }
+.android-navbar-title {
+  width : 500px;
+  line-height : 64px;
+  padding : 0 36px;
+  font-weight: 700;
+  font-size: 14px;
+  color : #757575;
+}
 .android-navigation-container {
   /* Simple hack to make the overflow happen to the left instead... */
   direction: rtl;
