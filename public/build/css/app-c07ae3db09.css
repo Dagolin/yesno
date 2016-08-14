@@ -133,6 +133,13 @@ a img {
   font-size: 14px;
   color : #757575;
 }
+
+@media (max-width: 470px)
+{
+  .android-navbar-title {
+    display: none;
+  }
+}
 .android-navigation-container {
   /* Simple hack to make the overflow happen to the left instead... */
   direction: rtl;

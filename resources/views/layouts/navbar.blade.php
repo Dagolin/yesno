@@ -3,11 +3,11 @@
         <!-- Logo -->
         <a href="{{ url('/') }}"><img class="android-logo-image" src="{{ URL::asset('images/android-logo.png') }}"></a>
         <!-- Add spacer, to align navigation to the right in desktop -->
-        <div class="android-header-spacer mdl-layout-spacer"></div>
         <div class="android-navbar-title">
-            <h5>Start a poll, react.</h5>
+            <h6>create polls, and see what will happen</h6>
         </div>
-            @if(Auth::check())
+        <div class="android-header-spacer mdl-layout-spacer"></div>
+    @if(Auth::check())
                 <button id="mdl-avatar-button" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab">
                     <img src="{{ URL::asset('images/user.jpg') }}" class="demo-avatar">
                 </button>
